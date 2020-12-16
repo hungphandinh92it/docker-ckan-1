@@ -9,7 +9,7 @@ volumes:
 services:
   ckan:
     container_name: ckan
-    image: keitaro/ckan:2.9.1localfocal
+    image: keitaro/ckan:2.9.1localpy2
     networks:
       - frontend
       - backend
