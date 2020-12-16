@@ -9,7 +9,7 @@ volumes:
 services:
   ckan:
     container_name: ckan
-    image: keitaro/ckan:${CKAN_VERSION}
+    image: keitaro/ckan:2.9.1
     networks:
       - frontend
       - backend
@@ -30,7 +30,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - DS_RO_PASS=${DATASTORE_READONLY_PASSWORD}
     volumes:
-      - ckan_data:/srv/app/data
+      - ./ckan_data:/srv/app/data
 
   datapusher:
     container_name: datapusher
