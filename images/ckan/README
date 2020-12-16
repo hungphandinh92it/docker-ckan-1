@@ -1,0 +1,3 @@
+Build the images from this directory using:
+
+    docker build --tag thinklabs/ckan:2.9.1localpy2 2.9py2

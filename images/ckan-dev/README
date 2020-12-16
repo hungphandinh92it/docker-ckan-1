@@ -1,0 +1,3 @@
+Build the images from this directory using:
+
+    docker build -t thinklabs/ckan-dev:2.9py2 -f 2.9py2/Dockerfile .
