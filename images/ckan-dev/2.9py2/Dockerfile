@@ -54,5 +54,5 @@ RUN mkdir $SRC_EXTENSIONS_DIR
 
 
 COPY 2.9py2/setup/start_ckan_development.sh ${APP_DIR}
-
 CMD ["/srv/app/start_ckan_development.sh"]
+USER ckan
