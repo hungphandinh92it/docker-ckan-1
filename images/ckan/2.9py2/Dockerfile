@@ -97,6 +97,7 @@ FROM alpine:3.12
 MAINTAINER Keitaro Inc <info@keitaro.com>
 
 ENV APP_DIR=/srv/app
+ENV CKAN_INI=${APP_DIR}/production.ini
 ENV SRC_DIR=/srv/app/src
 ENV DATA_DIR=/srv/app/data
 ENV PIP_SRC=${SRC_DIR}

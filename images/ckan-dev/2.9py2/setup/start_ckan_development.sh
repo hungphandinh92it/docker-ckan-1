@@ -41,7 +41,22 @@ do
     fi
 done
 
+# Set debug to true
+#echo "Enabling debug mode"
+#ckan config-tool $CKAN_INI -s DEFAULT "debug = true"
 
+# Update the plugins setting in the ini file with the values defined in the env var
+echo "Loading the following plugins: $CKAN__PLUGINS"
+ckan config-tool $CKAN_INI "ckan.plugins = $CKAN__PLUGINS"
+
+# Update test-core.ini DB, SOLR & Redis settings
+echo "Loading test settings into test-core.ini"
+ckan config-tool $SRC_DIR/ckan/test-core.ini \
+    "sqlalchemy.url = $TEST_CKAN_SQLALCHEMY_URL" \
+    "ckan.datastore.write_url = $TEST_CKAN_DATASTORE_WRITE_URL" \
+    "ckan.datastore.read_url = $TEST_CKAN_DATASTORE_READ_URL" \
+    "solr_url = $TEST_CKAN_SOLR_URL" \
+    "ckan.redis.url = $TEST_CKAN_REDIS_URL"
 
 # Run any startup scripts provided by images extending this one
 if [[ -d "${APP_DIR}/docker-entrypoint.d" ]]
