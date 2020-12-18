@@ -24,8 +24,10 @@ Với những config được cấu hình kiểu như sau
 - Sau khi run ckan container truy cập vào với quyền root và cài thôi:  
 ``docker exec -u root -it ckan /bin/bash``
 Ví dụ:   
-``cd ckanext-ckan_theme  && python setup.py develop``
+``cd src_extensions/ckanext-ckan_theme  && python setup.py develop``
 - Khởi động lại ckan   
+``docker-compose -f docker-compose-dev.yml down ckan``
+``docker-compose -f docker-compose-dev.yml up ckan``
 ``docker-compose -f docker-compose-dev.yml restart ckan``
 
    
