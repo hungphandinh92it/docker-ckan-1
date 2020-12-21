@@ -43,6 +43,9 @@ RUN pip install -r ${APP_DIR}/dev-requirements.txt
 # Create folder for local extensions sources
 RUN mkdir $SRC_EXTENSIONS_DIR
 COPY 2.9py2/setup/start_ckan_development.sh ${APP_DIR}
+#COPY 2.9py2/setup/setup_ckan_extensions.sh ${APP_DIR}
 
-CMD ["/srv/app/start_ckan_development.sh"]
+#CMD ["/srv/app/start_ckan_development.sh"]
+USER root
+CMD ["chmod","+x","/srv/app/start_ckan_development.sh"]
 USER ckan
