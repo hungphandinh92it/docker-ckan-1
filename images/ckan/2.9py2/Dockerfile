@@ -11,8 +11,10 @@ ENV GIT_BRANCH=ckan-2.9.1
 ENV SRC_DIR=/srv/app/src
 ENV PIP_SRC=${SRC_DIR}
 
-WORKDIR ${SRC_DIR}
+USER root
 
+WORKDIR ${SRC_DIR}
+RUN whoami
 # Packages to build CKAN requirements and plugins
 RUN apk add --no-cache \
         git \
@@ -51,7 +53,7 @@ RUN pip install -e git+${GIT_URL}@${GIT_BRANCH}#egg=ckan
 COPY ./patches ${SRC_DIR}/patches
 COPY ./scripts/apply_ckan_patches.sh ${SRC_DIR}/apply_ckan_patches.sh
 # Apply patches
-RUN ${SRC_DIR}/apply_ckan_patches.sh
+RUN chmod 755 ${SRC_DIR}/apply_ckan_patches.sh
 RUN rm -rf /srv/app/src/ckan/.git
 RUN pip wheel --wheel-dir=/wheels -r ckan/requirements-py2.txt
 RUN pip wheel --wheel-dir=/wheels uwsgi==2.0.19.1 gevent==20.6.2 greenlet==0.4.16
