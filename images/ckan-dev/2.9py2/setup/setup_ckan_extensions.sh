@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Install any local extensions in the src_extensions volume
-echo whoami
 echo "Looking for local extensions to install..."
+whoami
 echo "Extension dir contents:"
 ls -la $SRC_EXTENSIONS_DIR
 for i in $SRC_EXTENSIONS_DIR/*
