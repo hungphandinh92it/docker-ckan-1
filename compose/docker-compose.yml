@@ -9,7 +9,7 @@ volumes:
 services:
   ckan:
     container_name: ckan
-    image: keitaro/ckan:2.9.1localpy2
+    image: thinklabs/ckan-pro:2.9py2
     networks:
       - frontend
       - backend
@@ -31,6 +31,7 @@ services:
       - DS_RO_PASS=${DATASTORE_READONLY_PASSWORD}
     volumes:
       - ckan_data:/srv/app/data
+      - ./ckanext:/srv/app/src_extensions
 
   datapusher:
     container_name: datapusher

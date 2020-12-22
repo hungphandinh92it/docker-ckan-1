@@ -59,6 +59,9 @@ ckan config-tool $SRC_DIR/ckan/test-core.ini \
     "solr_url = $TEST_CKAN_SOLR_URL" \
     "ckan.redis.url = $TEST_CKAN_REDIS_URL"
 
+# Run the prerun script to init CKAN and create the default admin user
+sudo -u ckan -EH python prerun.py
+
 # Run any startup scripts provided by images extending this one
 if [[ -d "${APP_DIR}/docker-entrypoint.d" ]]
 then
@@ -76,7 +79,7 @@ fi
 UWSGI_OPTS="--socket /tmp/uwsgi.sock --uid ckan --gid ckan --http :5000 --master --enable-threads --wsgi-file /srv/app/wsgi.py --module wsgi:application --lazy-apps --gevent 2000 -p 2 -L --gevent-early-monkey-patch --vacuum --harakiri 50 --callable application"
 
 # Run the prerun script to init CKAN and create the default admin user
-python prerun.py
+#python prerun.py
 
 # Check if we are in maintenance mode and if yes serve the maintenance pages
 if [ "$MAINTENANCE_MODE" = true ]; then PYTHONUNBUFFERED=1 python maintenance/serve.py; fi
@@ -112,6 +115,8 @@ then
   else
     # Start uwsgi
     uwsgi $UWSGI_OPTS
+    # Start the development server with automatic reload
+    #sudo -u ckan -EH ckan -c $CKAN_INI run -H 0.0.0.0
   fi
 else
   echo "[prerun] failed...not starting CKAN."

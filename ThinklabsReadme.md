@@ -4,6 +4,9 @@
 # Build DEV images
 `cd images/ckan-dev`  
 `docker build -t thinklabs/ckan-dev:2.9py2 -f 2.9py2/Dockerfile .`  
+# Buid Production images
+`cd images/ckan-production`  
+`docker build -t thinklabs/ckan-pro:2.9py2 -f images/ckan-production/2.9py2/Dockerfile .`  
 # Config
 Chỉnh sửa ckan ini bằng cách thêm sửa vào file compose/.ckan-env
 Với những config được cấu hình kiểu như sau   
@@ -15,6 +18,9 @@ Với những config được cấu hình kiểu như sau
 `docker-compose -f docker-compose-dev.yml build`   
 # RUN DEV container
 `docker-compose -f docker-compose-dev.yml up`   
+# BUILD AND RUN PRODUCTION container
+`cd compose`   
+`docker-compose -f compose/docker-compose.yml up --build` 
 # STOP và xóa hết dữ liệu
 `docker-compose -f docker-compose-dev.yml down -v`   
 # RESTART 
