@@ -34,6 +34,8 @@ Ví dụ:
 - Khởi động lại ckan   
 ``docker-compose -f docker-compose-dev.yml down ckan``
 ``docker-compose -f docker-compose-dev.yml up ckan``
-``docker-compose -f docker-compose-dev.yml restart ckan``
+``docker-compose -f docker-compose-dev.yml restart ckan``  
+``docker volume rm ``  
+``docker-compose -f docker-compose-dev.yml up --detach --build ckan``  
 
    
