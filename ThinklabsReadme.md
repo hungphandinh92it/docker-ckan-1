@@ -20,7 +20,7 @@ Với những config được cấu hình kiểu như sau
 `docker-compose -f docker-compose-dev.yml up`   
 # BUILD AND RUN PRODUCTION container
 `cd compose`   
-`docker-compose -f compose/docker-compose.yml up --build` 
+`docker-compose -f docker-compose.yml up --build` 
 # STOP và xóa hết dữ liệu
 `docker-compose -f docker-compose-dev.yml down -v`   
 # RESTART 
