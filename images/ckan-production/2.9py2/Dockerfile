@@ -38,6 +38,11 @@ RUN pip install setuptools==44.1.0
 RUN pip install --upgrade pip
 
 RUN pip install -r $APP_DIR/src/ckan/dev-requirements.txt
+
+## Install extension
+RUN pip wheel --wheel-dir=/wheels git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming
+RUN pip wheel --wheel-dir=/wheels -r https://raw.githubusercontent.com/ckan/ckanext-scheming/master/requirements.txt
+
 #RUN pip install -r https://raw.githubusercontent.com/ckan/ckan/ckan-2.8.6/dev-requirements.txt
 #COPY 2.9py2/dev-requirements.txt ${APP_DIR}
 #RUN pip install -r ${APP_DIR}/dev-requirements.txt
